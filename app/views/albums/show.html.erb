@@ -1,0 +1,11 @@
+<h1> <%=@album.band.name %> - <%= @album.title %> <%="#{"(LIVE)" if @album.live}" %> </h1>
+<h2> Track list: </h2>
+  <ol>
+    <% @album.tracks.each do |track| %>
+      <li> <%= link_to track.title, track_url(track) %> </li>
+    <% end %>
+  </ol>
+<%= link_to "Add track", new_track_url(@album) %>  |
+<%= link_to "Edit this album", edit_album_url(@album) %>  |
+<%= link_to "More albums by #{@album.band.name}", band_url(@album.band) %>
+<%= button_to "Delete", album_url(@album), method: "delete" %>

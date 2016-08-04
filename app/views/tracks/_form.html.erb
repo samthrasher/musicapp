@@ -1,0 +1,29 @@
+<form action=<%= action %> method="POST" >
+  <%= auth_token %>
+
+  <input type="hidden" name="_method" value=<%= method %> />
+  <input type="hidden" name="track[album_id]" value=<%=@track.album_id %>
+
+  <label> Title:
+    <input
+      type="text"
+      name="track[title]"
+      id="track_title"
+      value="<%= @track.title %>">
+  </label><br/>
+
+  <label> Bonus track: Y
+    <input type="radio" name="track[bonus]" id="track_bonus_true" value=true
+      <%= " checked" if @track.bonus %> />
+  </label>
+  <label> N
+    <input type="radio" name="track[bonus]" id="track_bonus_false" value=false
+      <%= " checked" unless @track.bonus %> />
+  </label><br/>
+
+  <label> Lyrics:<br/>
+    <textarea name="track[lyrics]"><%= @track.lyrics %></textarea>
+  </label>
+
+  <input type="submit" value="Submit track">
+  </form>
